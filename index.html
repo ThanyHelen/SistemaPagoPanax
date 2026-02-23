@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PANA XTREAMING TV GO - Sistema de Pago</title>
-    
+   
     <!-- Favicon con la imagen proporcionada -->
     <link rel="icon" type="image/webp" href="https://dhgf5mcbrms62.cloudfront.net/110979006/header-fcHJMd/CWPhNmu-600x600.webp">
     <link rel="apple-touch-icon" href="https://dhgf5mcbrms62.cloudfront.net/110979006/header-fcHJMd/CWPhNmu-600x600.webp">
     <link rel="shortcut icon" href="https://dhgf5mcbrms62.cloudfront.net/110979006/header-fcHJMd/CWPhNmu-600x600.webp" type="image/webp">
-    
+   
     <style>
         * {
             margin: 0;
@@ -223,8 +223,8 @@
     <div class="container">
         <!-- Pantalla de bienvenida -->
         <div id="welcomeScreen" class="card">
-            <img src="https://dhgf5mcbrms62.cloudfront.net/110979006/header-fcHJMd/CWPhNmu-600x600.webp" 
-                 alt="PANA XTREAMING TV GO" 
+            <img src="https://dhgf5mcbrms62.cloudfront.net/110979006/header-fcHJMd/CWPhNmu-600x600.webp"
+                 alt="PANA XTREAMING TV GO"
                  class="header-image"
                  onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDYwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMzMzMiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSIjZmZkNzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+UEFOQSBYVFJFQU1JTkc8L3RleHQ+PC9zdmc+';">
             <div class="welcome-title">¡BIENVENIDOS!</div>
@@ -234,20 +234,20 @@
 
         <!-- Pantalla de información bancaria -->
         <div id="bankScreen" class="card hidden">
-            <img src="https://dhgf5mcbrms62.cloudfront.net/110979006/header-fcHJMd/CWPhNmu-600x600.webp" 
-                 alt="PANA XTREAMING TV GO" 
+            <img src="https://dhgf5mcbrms62.cloudfront.net/110979006/header-fcHJMd/CWPhNmu-600x600.webp"
+                 alt="PANA XTREAMING TV GO"
                  class="header-image"
                  onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDYwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMzMzMiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSIjZmZkNzAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+UEFOQSBYVFJFQU1JTkc8L3RleHQ+PC9zdmc+';">
-            
+           
             <div class="bank-name">BANCO MERCANTIL</div>
-            
+           
             <div class="bank-info">
                 <div class="info-item">
                     <span class="info-label">📞 TELÉFONO:</span>
                     <span class="info-value" id="phoneNumber">04120754787</span>
                     <button class="copy-btn" onclick="copyToClipboard('04120754787', event)">COPIAR</button>
                 </div>
-                
+               
                 <div class="info-item">
                     <span class="info-label">🆔 CÉDULA:</span>
                     <span class="info-value" id="idNumber">1967475</span>
@@ -282,7 +282,7 @@
             notification.textContent = message;
             notification.style.background = isError ? '#dc3545' : '#28a745';
             notification.classList.remove('hidden');
-            
+           
             setTimeout(() => {
                 notification.classList.add('hidden');
             }, 2000);
@@ -292,9 +292,9 @@
         function copyToClipboard(text, event) {
             event.preventDefault();
             event.stopPropagation();
-            
+           
             const button = event.target;
-            
+           
             // Intentar con Clipboard API moderno
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(text).then(() => {
@@ -302,15 +302,15 @@
                     const originalText = button.textContent;
                     button.textContent = '✓ COPIADO';
                     button.classList.add('copied');
-                    
-                    showNotification(¡${text} copiado!);
-                    
+                   
+                    showNotification(`¡${text} copiado!`);
+                   
                     // Restaurar el botón después de 2 segundos
                     setTimeout(() => {
                         button.textContent = originalText;
                         button.classList.remove('copied');
                     }, 2000);
-                    
+                   
                     // Vibración si el dispositivo lo soporta
                     if (navigator.vibrate) {
                         navigator.vibrate(50);
@@ -330,24 +330,24 @@
             textarea.style.position = 'fixed';
             textarea.style.opacity = '0';
             document.body.appendChild(textarea);
-            
+           
             try {
                 textarea.select();
                 textarea.setSelectionRange(0, 99999); // Para móviles
                 const successful = document.execCommand('copy');
-                
+               
                 if (successful) {
                     const originalText = button.textContent;
                     button.textContent = '✓ COPIADO';
                     button.classList.add('copied');
-                    
-                    showNotification(¡${text} copiado!);
-                    
+                   
+                    showNotification(`¡${text} copiado!`);
+                   
                     setTimeout(() => {
                         button.textContent = originalText;
                         button.classList.remove('copied');
                     }, 2000);
-                    
+                   
                     if (navigator.vibrate) {
                         navigator.vibrate(50);
                     }
@@ -365,8 +365,8 @@
         function openWhatsApp() {
             const phoneNumber = '584120754787';
             const message = 'Hola, aquí está mi comprobante de pago para PANA XTREAMING TV GO';
-            const whatsappUrl = https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)};
-            
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+           
             window.open(whatsappUrl, '_blank');
             showNotification('Redirigiendo a WhatsApp...');
         }
