@@ -217,12 +217,6 @@
             from { transform: translateX(100%); }
             to { transform: translateX(0); }
         }
-
-        .image-error {
-            color: #ff6b6b;
-            font-size: 12px;
-            margin-top: 5px;
-        }
     </style>
 </head>
 <body>
@@ -276,11 +270,13 @@
     <div id="notification" class="notification hidden"></div>
 
     <script>
+        // Función para mostrar la pantalla de información bancaria
         function showBankInfo() {
             document.getElementById('welcomeScreen').classList.add('hidden');
             document.getElementById('bankScreen').classList.remove('hidden');
         }
 
+        // Función para mostrar notificaciones
         function showNotification(message, isError = false) {
             const notification = document.getElementById('notification');
             notification.textContent = message;
@@ -292,25 +288,30 @@
             }, 2000);
         }
 
+        // Función principal de copiado
         function copyToClipboard(text, event) {
             event.preventDefault();
             event.stopPropagation();
             
             const button = event.target;
             
+            // Intentar con Clipboard API moderno
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(text).then(() => {
+                    // Cambiar el botón a estado "copiado"
                     const originalText = button.textContent;
                     button.textContent = '✓ COPIADO';
                     button.classList.add('copied');
                     
                     showNotification(¡${text} copiado!);
                     
+                    // Restaurar el botón después de 2 segundos
                     setTimeout(() => {
                         button.textContent = originalText;
                         button.classList.remove('copied');
                     }, 2000);
                     
+                    // Vibración si el dispositivo lo soporta
                     if (navigator.vibrate) {
                         navigator.vibrate(50);
                     }
@@ -322,6 +323,7 @@
             }
         }
 
+        // Método alternativo de copiado para navegadores antiguos
         function fallbackCopyText(text, button) {
             const textarea = document.createElement('textarea');
             textarea.value = text;
@@ -331,7 +333,7 @@
             
             try {
                 textarea.select();
-                textarea.setSelectionRange(0, 99999);
+                textarea.setSelectionRange(0, 99999); // Para móviles
                 const successful = document.execCommand('copy');
                 
                 if (successful) {
@@ -359,6 +361,7 @@
             }
         }
 
+        // Función para abrir WhatsApp
         function openWhatsApp() {
             const phoneNumber = '584120754787';
             const message = 'Hola, aquí está mi comprobante de pago para PANA XTREAMING TV GO';
@@ -368,6 +371,7 @@
             showNotification('Redirigiendo a WhatsApp...');
         }
 
+        // Prevenir comportamiento por defecto de los botones
         document.addEventListener('DOMContentLoaded', function() {
             const buttons = document.querySelectorAll('button');
             buttons.forEach(button => {
